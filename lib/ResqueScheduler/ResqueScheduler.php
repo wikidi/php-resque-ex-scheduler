@@ -244,8 +244,7 @@ class ResqueScheduler
         } else {
             $at = self::getTimestamp($at);
         }
-
-        $items = \Resque::redis()->zrangebyscore(self::QUEUE_NAME, '-inf', $at, array('limit', 0, 1));
+        $items = \Resque::redis()->zrangebyscore(self::QUEUE_NAME, '-inf', $at, array('limit' => array(0, 1)));
         if (!empty($items)) {
             return $items[0];
         }
