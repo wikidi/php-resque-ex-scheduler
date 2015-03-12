@@ -210,7 +210,7 @@ class ResqueScheduler
      * @return int                                       Timestamp
      * @throws ResqueScheduler_InvalidTimestampException
      */
-    private static function getTimestamp($timestamp)
+    protected static function getTimestamp($timestamp)
     {
         if ($timestamp instanceof \DateTime) {
             $timestamp = $timestamp->getTimestamp();
