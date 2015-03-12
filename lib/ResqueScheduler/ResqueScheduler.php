@@ -216,13 +216,13 @@ class ResqueScheduler
             $timestamp = $timestamp->getTimestamp();
         }
 
-        if ((int) $timestamp != $timestamp) {
-            throw new ResqueScheduler\InvalidTimestampException(
+        if (settype($timestamp, 'int') !== true) {
+            throw new InvalidTimestampException(
                 'The supplied timestamp value could not be converted to an integer.'
             );
         }
 
-        return (int) $timestamp;
+        return $timestamp;
     }
 
     /**
