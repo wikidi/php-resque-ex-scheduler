@@ -31,10 +31,11 @@ $logLevel = 0;
 $LOGGING = getenv('LOGGING');
 $VERBOSE = getenv('VERBOSE');
 $VVERBOSE = getenv('VVERBOSE');
-if (!empty($LOGGING) || !empty($VERBOSE)) {
-    $logLevel = ResqueScheduler\Worker::LOG_NORMAL;
-} elseif (!empty($VVERBOSE)) {
+
+if (!empty($VVERBOSE)) {
     $logLevel = ResqueScheduler\Worker::LOG_VERBOSE;
+} elseif (!empty($LOGGING) || !empty($VERBOSE)) {
+    $logLevel = ResqueScheduler\Worker::LOG_NORMAL;
 }
 
 // Load the user's application if one exists
